@@ -1,4 +1,4 @@
-# Private AI
+# Jarvis AI
 
 A privacy-first, completely on-device Android AI voice companion.
 
@@ -159,6 +159,23 @@ com.privateai/
 
 ## Setup
 
+### Files Excluded from Git
+
+The repository `.gitignore` keeps local or large generated assets out of GitHub. It excludes:
+
+- Android/Gradle state and build output: `.gradle/`, `.kotlin/`, `.idea/`, `**/build/`, `local.properties`, and native build folders.
+- Model and training artifacts: the root `models/`, `vivva_behavioral_adapter/`, and `vivva_merged_model/` directories, plus `*.litertlm`, `*.safetensors`, `*.gguf`, `*.onnx`, `*.pt`, `*.pth`, `*.ckpt`, `*.bin`, and `*.zip` files.
+- Local secrets/signing files: `.env*` (except `.env.example`), `*.jks`, `*.keystore`, `*.p12`, `*.pem`, and `*.key`.
+- The local dependency-insight dumps `new.txt` and `old.txt`.
+
+These rules only prevent untracked files from being added; they do not delete local files or remove files already committed. Do not force-add model weights, credentials, signing keys, or private datasets.
+
+### Importing into a New Workspace
+
+Clone the repository and open its root directory in Android Studio. The Gradle wrapper, app source, and pipeline scripts are included. Android Studio should create `local.properties` for the SDK on that machine; do not copy this machine-specific file from another workspace.
+
+No model weights are required to compile the app or run unit tests. Download the runtime model only if you want to run on-device inference. The optional GPU training workflow has separate Python dependencies in `pipeline/requirements_gpu.txt` and is not required for the Android app.
+
 ### Prerequisites
 
 1. Android Studio Hedgehog or later
@@ -170,7 +187,7 @@ com.privateai/
 ### Building
 
 ```bash
-# Clone the repository
+# Clone the repository (replace with your GitHub URL)
 git clone <repository-url>
 cd PrivateAI
 
@@ -181,26 +198,25 @@ cd PrivateAI
 ./gradlew installDebug
 ```
 
+On Windows PowerShell, use `./gradlew.bat` in place of `./gradlew`, for example `./gradlew.bat assembleDebug` and `./gradlew.bat test`.
+
 ### Adding the Model
 
-1. Download the model:
+The app requires a LiteRT-LM `.litertlm` file for inference. The default model is `gemma-4-E2B-it.litertlm`; it is not included in Git because of its size and separate model license/access terms.
+
+1. Install the LiteRT-LM CLI and download the Gemma model (a Hugging Face account/access may be required):
    ```bash
-   # Install litert-lm CLI
    uv tool install litert-lm
 
-   # Download model (requires HuggingFace account)
    litert-lm run \
      --from-huggingface-repo=litert-community/gemma-4-E2B-it-litert-lm \
      gemma-4-E2B-it.litertlm \
      --prompt="test"
    ```
 
-2. Push to device:
-   ```bash
-   adb push gemma-4-E2B-it.litertlm /data/data/com.privateai/files/models/
-   ```
+2. Install and launch a debuggable app build once. In Android Studio's **Device Explorer**, copy `gemma-4-E2B-it.litertlm` into the app's `no_backup/models/` directory, typically `/data/data/com.privateai/no_backup/models/`. The app creates this directory when it starts. The filename must remain unchanged.
 
-3. Launch the app.
+The app also supports an optional converted VIVVA model named `vivva-gemma-2b.litertlm`. When present, it takes precedence over Gemma. Raw `adapter_model.safetensors` or `adapter_model.bin` training files are not usable by the app; the fine-tuned model must first be merged/exported to LiteRT-LM format. Keep model files local and follow the model publisher's license when downloading or redistributing them.
 
 ## Performance
 
