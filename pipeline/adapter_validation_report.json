@@ -1,0 +1,62 @@
+{
+  "status": "PASSED",
+  "artifact_classification": "LEVEL_C_LOADABLE_PEFT_ADAPTER",
+  "adapter_directory": "vivva_behavioral_adapter",
+  "base_model": "google/gemma-2b-it",
+  "lora_rank": 16,
+  "lora_alpha": 32,
+  "target_modules": [
+    "q_proj",
+    "k_proj",
+    "v_proj",
+    "o_proj",
+    "gate_proj",
+    "up_proj",
+    "down_proj"
+  ],
+  "total_tensors": 252,
+  "trainable_parameters": 19611648,
+  "weights_size_mb": 74.84,
+  "error_count": 0,
+  "warning_count": 0,
+  "errors": [],
+  "warnings": [],
+  "sample_tensor_shapes": {
+    "base_model.model.model.layers.0.mlp.down_proj.lora_A.weight": [
+      16,
+      16384
+    ],
+    "base_model.model.model.layers.0.mlp.down_proj.lora_B.weight": [
+      2048,
+      16
+    ],
+    "base_model.model.model.layers.0.mlp.gate_proj.lora_A.weight": [
+      16,
+      2048
+    ],
+    "base_model.model.model.layers.0.mlp.gate_proj.lora_B.weight": [
+      16384,
+      16
+    ],
+    "base_model.model.model.layers.0.mlp.up_proj.lora_A.weight": [
+      16,
+      2048
+    ],
+    "base_model.model.model.layers.0.mlp.up_proj.lora_B.weight": [
+      16384,
+      16
+    ],
+    "base_model.model.model.layers.0.self_attn.k_proj.lora_A.weight": [
+      16,
+      2048
+    ],
+    "base_model.model.model.layers.0.self_attn.k_proj.lora_B.weight": [
+      256,
+      16
+    ]
+  },
+  "runtime_status": {
+    "off_device_validated": true,
+    "android_litert_runtime_ready": "DEFERRED_TO_STEP_6_CONVERSION"
+  }
+}

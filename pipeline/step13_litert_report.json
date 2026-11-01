@@ -1,0 +1,24 @@
+{
+  "timestamp": "2026-09-01",
+  "target_model": "vivva-gemma-2b.litertlm",
+  "classification": "BLOCKED_BY_TOOLCHAIN",
+  "scaffold_artifact": {
+    "path": "app/build/models/vivva-gemma-2b.litertlm",
+    "exists": false,
+    "nature": "SCAFFOLD_ONLY (Container magic header + JSON metadata wrapper)",
+    "is_compiled_flatbuffer_binary": false
+  },
+  "official_compilation_workflow": {
+    "target_model_type": "GEMMA_2B",
+    "required_python_version": "Python 3.10 or 3.11 (Linux x86_64 / macOS)",
+    "required_package": "mediapipe>=0.10.14",
+    "converter_module": "mediapipe.tasks.python.genai.converter",
+    "exact_command": "python -m mediapipe.tasks.python.genai.converter --model_type GEMMA_2B --input_ckpt vivva_merged_model/ --output_tflite_file app/src/main/assets/models/vivva-gemma-2b.litertlm"
+  },
+  "android_runtime_compatibility": {
+    "model_manager_fallback": "ModelManager.getEffectiveModelPath() returns base model if VIVVA model absent/corrupt",
+    "gpu_hardware_fallback": "LiteRTLMEngine attempts OpenCL GPU and automatically falls back to CPU",
+    "fail_safe_verified": true
+  },
+  "anti_fabrication_rule": "SCAFFOLD_ONLY is never reported as REAL_COMPILED. The toolchain requirement is explicitly documented."
+}

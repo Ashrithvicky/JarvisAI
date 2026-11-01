@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!--
+        SECURITY: No INTERNET permission.
+        This application runs completely offline.
+        All AI inference, speech processing, and data storage happen on-device.
+        No network calls are made. No data leaves the device.
+    -->
+
+    <!-- Microphone permission for future speech input (Phase 2) -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MICROPHONE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" tools:ignore="ProtectedPermissions" />
+
+    <!-- No INTERNET permission. Intentionally omitted. -->
+    <!-- No ACCESS_NETWORK_STATE permission. Intentionally omitted. -->
+
+    <!-- Needed to resolve app names for "open <app>" voice commands -->
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent>
+    </queries>
+
+    <!--
+        ============================================================
+        BACKUP KILLING - ZERO BACKUP OF ANY KIND
+        ============================================================
+
+        PRIMARY BLOCK (OS-level):
+            android:allowBackup="false"
+            The OS never attempts any backup operation. This is the
+            single most important attribute. Android ignores the
+            backupAgent attribute when allowBackup="false".
+
+        LEGACY BLOCK (API < 31):
+            android:fullBackupContent="false"
+            Boolean "false" blocks ALL data from legacy full backup.
+            We do NOT use an XML include/exclude file because that
+            approach allows data through by default. The boolean
+            "false" is strictly stronger.
+
+        MODERN BLOCK (API 31+):
+            android:dataExtractionRules
+            Explicitly excludes every data domain from both cloud
+            backup and device-to-device transfer. This is defense-in-depth
+            in case the OS somehow processes extraction rules despite
+            allowBackup="false".
+
+        NO BACKUP AGENT:
+            No android:backupAgent is declared. With allowBackup="false",
+            Android ignores backupAgent anyway. Omitting it minimizes
+            attack surface.
+
+        Additional flags:
+            android:hasFragileUserData="false" - No "preserve data?" prompt
+            android:killAfterRestore="false"   - App not killed during restore
+            android:restoreAnyVersion="false"   - No cross-version restore
+
+        RESULT: Zero bytes of user data are backed up or restored.
+        ============================================================
+    -->
+    <application
+        android:name=".PrivateAIApplication"
+        android:allowBackup="false"
+        android:fullBackupContent="false"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:hasFragileUserData="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.PrivateAI"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:killAfterRestore="false"
+        android:restoreAnyVersion="false">
+
+        <!-- GPU acceleration (OpenCL) - optional, falls back to CPU -->
+        <uses-native-library
+            android:name="libvndksupport.so"
+            android:required="false" />
+        <uses-native-library
+            android:name="libOpenCL.so"
+            android:required="false" />
+
+        <activity
+            android:name=".ui.MainActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:theme="@style/Theme.PrivateAI"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name=".voice.VivvaVoiceService"
+            android:exported="false"
+            android:foregroundServiceType="microphone" />
+
+        <service
+            android:name=".monitor.VivvaAccessibilityService"
+            android:exported="false"
+            android:label="@string/app_name"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/accessibility_service_config" />
+        </service>
+
+        <!-- FileProvider for secure file access -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+    </application>
+</manifest>

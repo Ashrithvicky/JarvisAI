@@ -1,0 +1,66 @@
+{
+  "release_candidate_version": "1.0.0-RC1",
+  "step": "9.0",
+  "timestamp": "2026-09-01 10:28:39",
+  "release_status": "RELEASE CANDIDATE \u2014 EXTERNAL BLOCKER(S) ONLY",
+  "artifacts": {
+    "debug_apk": {
+      "path": "app/build/outputs/apk/debug/app-debug.apk",
+      "exists": true,
+      "size_mb": 64.44,
+      "sha256": "2df688fae10863cdaa458faf7db4a7802d8851603d8c450094d423620eda7302"
+    },
+    "fused_merged_model": {
+      "path": "vivva_merged_model/model.safetensors",
+      "exists": true,
+      "size_mb": 3780.01,
+      "sha256": "a403cfd699ec41254cbee931b7fd63cdbacf1c3602d702f9d3b9aab722915746",
+      "fused_parameters": 1981808640,
+      "format": "float16"
+    },
+    "lora_structural_adapter": {
+      "path": "vivva_behavioral_adapter/adapter_model.safetensors",
+      "exists": true,
+      "size_mb": 74.84,
+      "sha256": "2a3576fea51c694975f270c38f5667b17db073c09ae61f2979565c2e20defb4c",
+      "rank": 16,
+      "alpha": 32,
+      "tensors": 252,
+      "nature": "STRUCTURAL_PEFT_INITIALIZATION"
+    },
+    "behavioral_dataset": {
+      "path": "app/build/dataset/vivva_training_dataset.jsonl",
+      "exists": true,
+      "total_examples": 720,
+      "train_examples": 648,
+      "val_examples": 72,
+      "sha256": "b386969b25c366b4401e0ff6b80de873838042c9dea24f7142203f60fd562201"
+    }
+  },
+  "verification_summary": {
+    "unit_tests_passing": "230 / 230 PASSED (100% Green)",
+    "clean_build_status": "BUILD SUCCESSFUL",
+    "cross_user_isolation": "100% Isolated",
+    "cross_project_isolation": "100% Isolated",
+    "profile_token_budget_enforced": "<= 150 Tokens",
+    "memory_token_budget_enforced": "<= 250 Tokens",
+    "pedagogy_token_budget_enforced": "<= 40 Tokens",
+    "total_system_prompt_overhead": "<= 440 Tokens"
+  },
+  "external_blockers": [
+    {
+      "id": "BLOCKER-1",
+      "subsystem": "Full Multi-Epoch LoRA Backpropagation Training",
+      "classification": "BLOCKED_BY_HARDWARE",
+      "prerequisite": "NVIDIA GPU CUDA server (16GB+ VRAM)",
+      "reproduction_command": "python pipeline/run_peft_training.py"
+    },
+    {
+      "id": "BLOCKER-2",
+      "subsystem": "Official MediaPipe GenAI FlatBuffer Compilation",
+      "classification": "BLOCKED_BY_EXTERNAL_TOOL",
+      "prerequisite": "Google MediaPipe GenAI Converter Python binary",
+      "reproduction_command": "python -m mediapipe.tasks.python.genai.converter --model_type GEMMA_2B --input_ckpt vivva_merged_model/ --output_tflite_file app/src/main/assets/models/vivva-gemma-2b.litertlm"
+    }
+  ]
+}

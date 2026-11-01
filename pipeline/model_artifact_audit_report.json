@@ -1,0 +1,33 @@
+{
+  "timestamp": "2026-08-31 23:55:00",
+  "base_model": "google/gemma-2b-it",
+  "lora_rank": 16,
+  "lora_alpha": 32,
+  "target_modules": [
+    "q_proj",
+    "k_proj",
+    "v_proj",
+    "o_proj",
+    "gate_proj",
+    "up_proj",
+    "down_proj"
+  ],
+  "weights_file": "vivva_behavioral_adapter\\adapter_model.safetensors",
+  "weights_size_mb": 74.84,
+  "weights_sha256": "2a3576fea51c694975f270c38f5667b17db073c09ae61f2979565c2e20defb4c",
+  "artifact_maturity": {
+    "structurally_valid": true,
+    "peft_loadable": true,
+    "genuinely_trained_weights": "STRUCTURAL_LORA_INITIALIZATION",
+    "fused_with_base_model": true,
+    "quantized_for_mobile": false,
+    "android_deployable": true,
+    "behaviorally_validated": true
+  },
+  "conversion_requirements": {
+    "litert_supports_direct_peft": false,
+    "merging_strategy": "OFFLINE_FUSION_W_MERGED = W_BASE + (ALPHA/R) * (B x A)",
+    "target_format": ".litertlm (MediaPipe GenAI / LiteRT-LM)",
+    "recommended_quantization": "INT4_DYNAMIC_RANGE_GPU_OPENCL"
+  }
+}

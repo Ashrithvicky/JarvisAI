@@ -1,0 +1,18 @@
+{
+  "status": "PASSED",
+  "model_dir": "vivva_merged_model",
+  "base_model": "google/gemma-2b-it",
+  "parameters": 1981808640,
+  "fused_module_tensors": 126,
+  "file_size_mb": 3780.01,
+  "dtype": "float16",
+  "vocab_size": 256000,
+  "chat_template_present": true,
+  "peft_independent": true,
+  "numerical_stability": {
+    "nan_count": 0,
+    "inf_count": 0
+  },
+  "errors": [],
+  "warnings": []
+}

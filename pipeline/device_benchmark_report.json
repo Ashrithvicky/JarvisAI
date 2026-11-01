@@ -1,0 +1,18 @@
+{
+  "timestamp": "2026-09-01T17:44:43Z",
+  "status": "PENDING_PHYSICAL_DEVICE",
+  "physical_device_connected": false,
+  "device_model": null,
+  "soc_chipset": null,
+  "metrics": {
+    "cold_load_ms": null,
+    "warm_load_ms": null,
+    "ttft_ms": null,
+    "prefill_tok_sec": null,
+    "decode_tok_sec": null,
+    "peak_ram_mb": null,
+    "thermal_status": null,
+    "battery_drain_rate_ma": null
+  },
+  "reason": "Execution environment currently has no physical Android device attached via USB/Wi-Fi ADB. All benchmark numbers are preserved as NULL to prevent simulation/fabrication."
+}

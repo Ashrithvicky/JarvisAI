@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <files-path
+        name="models"
+        path="models/" />
+    <files-path
+        name="memories"
+        path="memories/" />
+    <files-path
+        name="conversations"
+        path="conversations/" />
+    <cache-path
+        name="cache"
+        path="." />
+    <external-files-path
+        name="external_models"
+        path="models/" />
+</paths>

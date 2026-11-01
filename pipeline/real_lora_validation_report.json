@@ -1,0 +1,15 @@
+{
+  "status": "PASSED",
+  "adapter_directory": "vivva_behavioral_adapter",
+  "base_model": "google/gemma-2b-it",
+  "lora_rank": 16,
+  "lora_alpha": 32,
+  "scaling_factor": 2.0,
+  "tensors_inspected": 252,
+  "total_weight_elements": 19611648,
+  "nan_detected_count": 0,
+  "inf_detected_count": 0,
+  "errors": [],
+  "warnings": [],
+  "adapter_nature": "STRUCTURAL_PEFT_WEIGHTS_FOR_FUSION"
+}

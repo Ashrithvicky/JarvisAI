@@ -1,0 +1,38 @@
+# Android and Gradle local state
+.gradle/
+.kotlin/
+**/build/
+.idea/
+local.properties
+*.iml
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Downloaded and trained model artifacts
+/models/
+/vivva_behavioral_adapter/
+/vivva_merged_model/
+*.litertlm
+*.safetensors
+*.gguf
+*.onnx
+*.pt
+*.pth
+*.ckpt
+*.bin
+*.zip
+
+# Local secrets and signing material
+.env
+.env.*
+!.env.example
+*.jks
+*.keystore
+*.p12
+*.pem
+*.key
+
+# Generated dependency-insight dumps
+/new.txt
+/old.txt

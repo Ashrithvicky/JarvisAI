@@ -1,0 +1,28 @@
+{
+  "timestamp": "2026-09-01",
+  "profiles": [
+    {
+      "format": "FP16 (Half Precision)",
+      "classification": "PHYSICALLY_GENERATED",
+      "size_mb": 3780.01,
+      "artifact_verified": true,
+      "path": "vivva_merged_model/model.safetensors"
+    },
+    {
+      "format": "INT8 (8-bit Weight Compression)",
+      "classification": "DERIVED",
+      "size_mb": 1980.0,
+      "artifact_verified": false,
+      "path": "Mathematical Model"
+    },
+    {
+      "format": "INT4 (Dynamic Range Mobile AWQ/GPTQ)",
+      "classification": "SIMULATED_AND_DERIVED",
+      "size_mb": 1180.0,
+      "artifact_verified": false,
+      "path": "Mobile OpenCL Specification Target"
+    }
+  ],
+  "classification": "FP16_PHYSICALLY_GENERATED",
+  "truth_rule": "FP16 weights file (3.78 GB) is verified on disk. INT8/INT4 are derived specifications."
+}

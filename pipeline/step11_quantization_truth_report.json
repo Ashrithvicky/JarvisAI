@@ -1,0 +1,27 @@
+{
+  "timestamp": "2026-09-01",
+  "profiles": [
+    {
+      "precision": "FP16 (Half Precision)",
+      "classification": "ACTUALLY_GENERATED",
+      "disk_size_mb": 3780.01,
+      "artifact_path": "vivva_merged_model/model.safetensors",
+      "verified": true
+    },
+    {
+      "precision": "INT8 (Weight-Only 8-bit)",
+      "classification": "DERIVED",
+      "disk_size_mb": 1980.0,
+      "artifact_path": "Mathematical Specification",
+      "verified": false
+    },
+    {
+      "precision": "INT4 (Dynamic Range AWQ/GPTQ)",
+      "classification": "SIMULATED_AND_DERIVED",
+      "disk_size_mb": 1180.0,
+      "artifact_path": "Target Mobile Specification",
+      "verified": false
+    }
+  ],
+  "truth_enforcement_rule": "FP16 is the only physically generated weights file on disk. INT8/INT4 are derived simulation targets."
+}

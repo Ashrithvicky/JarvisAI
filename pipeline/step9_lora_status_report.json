@@ -1,0 +1,19 @@
+{
+  "status": "PASSED_STRUCTURAL_AUDIT",
+  "weight_nature": "STRUCTURAL_PEFT_INITIALIZATION",
+  "is_genuinely_trained_via_gradient_backprop": false,
+  "adapter_tensors": {
+    "total": 252,
+    "lora_A": 126,
+    "lora_B": 126,
+    "trainable_parameters": 19611648,
+    "b_matrices_are_initial_zeros": true
+  },
+  "hardware_blocker": {
+    "cuda_available": false,
+    "device_name": "CPU_ONLY",
+    "minimum_hardware_required": "1x NVIDIA RTX 3090 / 4090 / A100 (16GB+ VRAM)"
+  },
+  "reproducible_cuda_training_command": "python pipeline/run_peft_training.py",
+  "honest_assessment": "Weights are structurally valid PEFT LoRA matrices (Rank 16, Alpha 32, 252 tensors) initialized with standard LoRA init (Kaiming A / Zero B). Zero backpropagation gradients were fabricated. Full training pipeline is prepared for execution on GPU hardware."
+}

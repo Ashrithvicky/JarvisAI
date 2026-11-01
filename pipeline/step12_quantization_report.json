@@ -1,0 +1,28 @@
+{
+  "timestamp": "2026-09-01",
+  "profiles": [
+    {
+      "format": "FP16 (Half Precision)",
+      "classification": "ACTUALLY_GENERATED",
+      "disk_size_mb": 3780.01,
+      "artifact_exists": true,
+      "location": "vivva_merged_model/model.safetensors"
+    },
+    {
+      "format": "INT8 (Weight-Only 8-bit)",
+      "classification": "DERIVED",
+      "disk_size_mb": 1980.0,
+      "artifact_exists": false,
+      "location": "Specification Model"
+    },
+    {
+      "format": "INT4 (Dynamic Range AWQ/GPTQ)",
+      "classification": "SIMULATED_AND_DERIVED",
+      "disk_size_mb": 1180.0,
+      "artifact_exists": false,
+      "location": "Target Mobile OpenCL Specification"
+    }
+  ],
+  "classification": "FP16_ONLY_GENERATED",
+  "anti_fabrication_rule": "FP16 is the only physically verified weights artifact on disk (3.78 GB). INT8/INT4 are derived specifications."
+}

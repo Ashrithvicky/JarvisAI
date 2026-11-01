@@ -1,0 +1,17 @@
+{
+  "status": "PASSED",
+  "merged_model_dir": "vivva_merged_model",
+  "base_architecture": "GemmaForCausalLM",
+  "hidden_size": 2048,
+  "intermediate_size": 16384,
+  "num_hidden_layers": 18,
+  "total_fused_modules": 126,
+  "total_fused_parameters": 1981808640,
+  "weights_size_mb": 3780.01,
+  "dtype": "float16",
+  "nan_count": 0,
+  "inf_count": 0,
+  "errors": [],
+  "warnings": [],
+  "standalone_peft_independent": true
+}

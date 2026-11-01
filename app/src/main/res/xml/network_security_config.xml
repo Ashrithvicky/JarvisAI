@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    SECURITY: Block all network access.
+    This configuration explicitly denies all cleartext and encrypted traffic.
+    The app intentionally has no INTERNET permission, but this defense-in-depth
+    measure ensures no network connections can be established even if the
+    permission were accidentally added.
+-->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="false">
+        <trust-anchors>
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+
+    <!-- Block all domain connections -->
+    <domain-config cleartextTrafficPermitted="false">
+        <domain includeSubdomains="false">localhost</domain>
+        <domain includeSubdomains="false">127.0.0.1</domain>
+    </domain-config>
+</network-security-config>

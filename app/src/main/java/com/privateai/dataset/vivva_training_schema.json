@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "VIVVA Fine-Tuning Example Schema",
+  "description": "Schema for multi-turn behavioral fine-tuning and evaluation examples for VIVVA on-device AI.",
+  "type": "object",
+  "required": [
+    "id",
+    "category",
+    "domain",
+    "task",
+    "user_state",
+    "explanation_level",
+    "user_message",
+    "expected_reasoning_approach",
+    "ideal_response",
+    "adaptation_reason",
+    "anti_patterns"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the training example (e.g. vivva-0001)."
+    },
+    "category": {
+      "type": "string",
+      "description": "Behavioral pillar category code (e.g. DSA_EXPLANATION, CONFUSION_RECOVERY, FALSE_PREMISE_CORRECTION)."
+    },
+    "domain": {
+      "type": "string",
+      "enum": ["DSA", "CODING", "DEVOPS", "SYSTEM_DESIGN", "GENERAL", "TROUBLESHOOTING"],
+      "description": "Target technical or conversational domain."
+    },
+    "task": {
+      "type": "string",
+      "description": "Deterministic classified task type."
+    },
+    "user_state": {
+      "type": "string",
+      "enum": [
+        "NEW_CONCEPT", "EXPLORING", "LEARNING", "CONFUSED", "FRUSTRATED",
+        "IMPLEMENTING", "DEBUGGING", "VERIFYING", "DEEP_DIVE", "COMPARING",
+        "PLANNING", "GENERAL_CONVERSATION", "UNKNOWN"
+      ],
+      "description": "The user's real-time cognitive and situational state in this turn."
+    },
+    "explanation_level": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 5,
+      "description": "Pedagogical depth level: 1 (Direct), 2 (Analogy), 3 (Micro-step), 4 (Formal Technical), 5 (Advanced Internals)."
+    },
+    "conversation": {
+      "type": "array",
+      "description": "Prior turns in the conversation (if multi-turn).",
+      "items": {
+        "type": "object",
+        "required": ["role", "content"],
+        "properties": {
+          "role": {
+            "type": "string",
+            "enum": ["user", "assistant"]
+          },
+          "content": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "user_message": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Current incoming user message."
+    },
+    "expected_reasoning_approach": {
+      "type": "string",
+      "description": "How VIVVA's internal reasoning should structure the response."
+    },
+    "ideal_response": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The ideal gold-standard assistant response embodying Friend + Mentor + Patient Teacher."
+    },
+    "adaptation_reason": {
+      "type": "string",
+      "description": "Pedagogical justification for choosing this specific response style and depth."
+    },
+    "anti_patterns": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Negative behaviors that the model must avoid (e.g. repeated definitions, robotic clichés, patronizing tone)."
+    }
+  }
+}

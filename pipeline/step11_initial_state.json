@@ -1,0 +1,57 @@
+{
+  "timestamp": "2026-09-01",
+  "artifacts": {
+    "lora_adapter": {
+      "path": "vivva_behavioral_adapter/adapter_model.safetensors",
+      "exists": true,
+      "size_mb": 74.84,
+      "sha256": "2a3576fea51c694975f270c38f5667b17db073c09ae61f2979565c2e20defb4c",
+      "tensors": 252,
+      "trainable_parameters": 19611648,
+      "nature": "STRUCTURAL_INITIALIZATION",
+      "can_load": true,
+      "is_gradient_trained": false
+    },
+    "merged_model": {
+      "path": "vivva_merged_model/model.safetensors",
+      "exists": true,
+      "size_mb": 3780.01,
+      "sha256": "a403cfd699ec41254cbee931b7fd63cdbacf1c3602d702f9d3b9aab722915746",
+      "fused_tensors": 126,
+      "fused_parameters": 1981808640,
+      "format": "float16",
+      "can_load_without_peft": true,
+      "nature": "OFFLINE_FUSED_CHECKPOINT"
+    },
+    "litert_container": {
+      "path": "app/build/models/vivva-gemma-2b.litertlm",
+      "exists": false,
+      "nature": "SCAFFOLD_ONLY (Container magic header + metadata scaffold)",
+      "is_official_mediapipe_binary": false
+    },
+    "dataset": {
+      "path": "app/build/dataset/vivva_training_dataset.jsonl",
+      "exists": true,
+      "total_examples": 720,
+      "nature": "REAL_VERIFIED_SFT_DATASET"
+    },
+    "debug_apk": {
+      "path": "app/build/outputs/apk/debug/app-debug.apk",
+      "exists": true,
+      "size_mb": 64.44,
+      "sha256": "2df688fae10863cdaa458faf7db4a7802d8851603d8c450094d423620eda7302"
+    }
+  },
+  "hardware_and_tooling_blockers": {
+    "blocker_1_lora_backprop": {
+      "status": "BLOCKED_BY_HARDWARE",
+      "reason": "Host CPU AMD Ryzen 5 5500U; PyTorch CUDA is unavailable. Requires NVIDIA GPU server with 16GB+ VRAM.",
+      "reproduction_script": "pipeline/run_peft_training.py"
+    },
+    "blocker_2_litert_compilation": {
+      "status": "BLOCKED_BY_EXTERNAL_TOOL",
+      "reason": "Google MediaPipe GenAI converter package not installed locally in Python env. Official converter required for .bin FlatBuffer generation.",
+      "reproduction_command": "python -m mediapipe.tasks.python.genai.converter --model_type GEMMA_2B --input_ckpt vivva_merged_model/ --output_tflite_file app/src/main/assets/models/vivva-gemma-2b.litertlm"
+    }
+  }
+}

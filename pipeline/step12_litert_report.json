@@ -1,0 +1,21 @@
+{
+  "timestamp": "2026-09-01",
+  "target_model": "vivva-gemma-2b.litertlm",
+  "classification": "BLOCKED_BY_TOOLCHAIN",
+  "artifact_details": {
+    "path": "app/build/models/vivva-gemma-2b.litertlm",
+    "exists": false,
+    "nature": "SCAFFOLD_ONLY (Container magic header + JSON manifest wrapper)",
+    "is_compiled_flatbuffer_binary": false
+  },
+  "official_conversion_route": {
+    "required_package": "mediapipe.tasks.python.genai.converter",
+    "required_system": "Linux x86_64 or macOS with Google MediaPipe GenAI wheel",
+    "exact_command": "python -m mediapipe.tasks.python.genai.converter --model_type GEMMA_2B --input_ckpt vivva_merged_model/ --output_tflite_file app/src/main/assets/models/vivva-gemma-2b.litertlm"
+  },
+  "android_runtime_compatibility": {
+    "model_manager_discovery": "ModelManager.getEffectiveModelPath() seamlessly targets custom models and falls back to base model",
+    "hardware_backend": "LiteRTLMEngine attempts OpenCL GPU and automatically falls back to CPU",
+    "fail_safe_verified": true
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "timestamp": "2026-09-01",
+  "cuda_available": false,
+  "device_name": "CPU_ONLY",
+  "vram_gb": 0.0,
+  "virtualization": {
+    "wsl_installed": true,
+    "docker_installed": true
+  },
+  "dataset": {
+    "path": "app/build/dataset/vivva_training_dataset.jsonl",
+    "exists": true,
+    "sample_count": 338
+  },
+  "training_preflight": {
+    "script": "pipeline/run_peft_training.py",
+    "base_model": "google/gemma-2b-it",
+    "rank": 16,
+    "alpha": 32,
+    "target_modules": [
+      "q_proj",
+      "k_proj",
+      "v_proj",
+      "o_proj",
+      "gate_proj",
+      "up_proj",
+      "down_proj"
+    ],
+    "status": "BLOCKED_BY_HARDWARE"
+  },
+  "one_command_gpu_execution": "python pipeline/run_peft_training.py --base_model google/gemma-2b-it"
+}

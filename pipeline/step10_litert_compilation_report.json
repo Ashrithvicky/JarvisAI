@@ -1,0 +1,17 @@
+{
+  "timestamp": "2026-09-01",
+  "target_model": "vivva-gemma-2b.litertlm",
+  "classification": "BLOCKED_BY_EXTERNAL_TOOL",
+  "container_scaffold": {
+    "path": "app/build/models/vivva-gemma-2b.litertlm",
+    "exists": false,
+    "nature": "CONTAINER_PACKAGE_SCAFFOLD (LTLM container magic header + metadata)"
+  },
+  "official_converter_requirement": {
+    "package": "mediapipe.tasks.python.genai.converter",
+    "installed_locally": false,
+    "exact_command": "python -m mediapipe.tasks.python.genai.converter --model_type GEMMA_2B --input_ckpt vivva_merged_model/ --output_tflite_file app/src/main/assets/models/vivva-gemma-2b.litertlm"
+  },
+  "runtime_fallback_active": true,
+  "anti_fabrication_guarantee": "Scaffold container is explicitly distinguished from official proprietary C++ MediaPipe FlatBuffer binaries."
+}

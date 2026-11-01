@@ -1,0 +1,19 @@
+{
+  "timestamp": "2026-08-31 23:42:09",
+  "adapter_load_time_ms": 2753.19,
+  "total_tensors": 252,
+  "trainable_parameters": 19611648,
+  "weights_size_safetensors_mb": 74.84,
+  "weights_size_pytorch_bin_mb": 74.9,
+  "memory_overhead_pct": 3.8,
+  "execution_validation_status": {
+    "off_device_python_validated": true,
+    "android_on_device_runtime": "PRESERVED_GPU_LITERT_GENDOC_STEP_6"
+  },
+  "token_budgets": {
+    "profile_context_max_tokens": 150,
+    "memory_context_max_tokens": 250,
+    "adaptation_directive_max_tokens": 40,
+    "total_system_prompt_max_tokens": 440
+  }
+}

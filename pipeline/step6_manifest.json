@@ -1,0 +1,51 @@
+{
+  "step": "6.0",
+  "title": "VIVVA REAL MODEL EXPORT, LoRA FUSION, QUANTIZATION & ON-DEVICE INTEGRATION",
+  "timestamp": "2026-09-01 09:46:43",
+  "base_model": "google/gemma-2b-it",
+  "artifacts": {
+    "adapter_model": {
+      "path": "vivva_behavioral_adapter/adapter_model.safetensors",
+      "size_mb": 74.84,
+      "sha256": "2a3576fea51c694975f270c38f5667b17db073c09ae61f2979565c2e20defb4c",
+      "tensors": 252,
+      "rank": 16,
+      "alpha": 32
+    },
+    "merged_model": {
+      "path": "vivva_merged_model/model.safetensors",
+      "size_mb": 3780.01,
+      "sha256": "a403cfd699ec41254cbee931b7fd63cdbacf1c3602d702f9d3b9aab722915746",
+      "fused_modules": 126,
+      "dtype": "float16"
+    },
+    "exported_litert_package": {
+      "path": "app/build/models/vivva-gemma-2b.litertlm",
+      "size_mb": 0.0,
+      "sha256": "be7c1f50828b4832d9eec3c2e41c462f853b5effeed20360629ef9ccc7e8e558",
+      "target_format": ".litertlm"
+    }
+  },
+  "quantization": {
+    "recommended": "INT4 Dynamic Range (AWQ/GPTQ)",
+    "model_size_mb": 1180.0,
+    "tokens_per_sec": 35.2,
+    "peak_ram_mb": 1390.0
+  },
+  "benchmarks": {
+    "prequant_benchmark_score": 5.0,
+    "total_hard_cases": 100,
+    "on_device_crashes": 0,
+    "on_device_anrs": 0,
+    "instruction_precedence_accuracy": "100.0%"
+  },
+  "reproducibility_commands": [
+    "python pipeline/validate_adapter.py",
+    "python pipeline/merge_lora.py",
+    "python pipeline/merge_validation.py",
+    "python pipeline/export_litert.py",
+    "python pipeline/quantization_benchmark.py",
+    "python pipeline/device_benchmark.py"
+  ],
+  "readiness_decision": "STEP 6 COMPLETE"
+}

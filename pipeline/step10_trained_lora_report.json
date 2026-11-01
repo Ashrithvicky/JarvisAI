@@ -1,0 +1,38 @@
+{
+  "timestamp": "2026-09-01",
+  "adapter_directory": "vivva_behavioral_adapter",
+  "classification": "STRUCTURAL_INITIALIZATION",
+  "is_genuinely_trained_via_gradient_backprop": false,
+  "peft_configuration": {
+    "base_model": "google/gemma-2b-it",
+    "r": 16,
+    "lora_alpha": 32,
+    "target_modules": [
+      "q_proj",
+      "k_proj",
+      "v_proj",
+      "o_proj",
+      "gate_proj",
+      "up_proj",
+      "down_proj"
+    ]
+  },
+  "tensor_statistics": {
+    "total_tensors": 252,
+    "lora_A_count": 126,
+    "lora_B_count": 126,
+    "trainable_parameters": 19611648,
+    "nan_count": 0,
+    "inf_count": 0,
+    "b_matrices_are_initial_zeros": true,
+    "average_a_mean": -1.8990522401884571e-06,
+    "average_b_mean": 0.0
+  },
+  "external_gpu_training_package": {
+    "training_script": "pipeline/run_peft_training.py",
+    "dataset": "app/build/dataset/vivva_training_dataset.jsonl",
+    "required_hardware": "1x NVIDIA RTX 3090/4090/A100 (16GB+ VRAM)",
+    "command": "python pipeline/run_peft_training.py"
+  },
+  "anti_fabrication_guarantee": "B matrices are standard initial zeros (Kaiming A / Zero B). No backpropagation was fabricated on CPU."
+}

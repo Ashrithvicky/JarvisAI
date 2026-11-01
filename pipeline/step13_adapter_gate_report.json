@@ -1,0 +1,17 @@
+{
+  "timestamp": "2026-09-01",
+  "gate_decision": "REJECTED_STRUCTURAL_INITIALIZATION_ONLY",
+  "status": "STRUCTURAL_INITIALIZATION",
+  "can_proceed_to_prod_merge": false,
+  "adapter_file": "vivva_behavioral_adapter\\adapter_model.safetensors",
+  "adapter_size_mb": 74.84,
+  "tensors_count": 252,
+  "trainable_parameters": 19611648,
+  "b_matrices_are_initial_zeros": true,
+  "training_manifest_present": false,
+  "numerical_stability": {
+    "nan_count": 0,
+    "inf_count": 0
+  },
+  "anti_fabrication_rule": "B matrices are checked directly from safetensors data. All zeros = REJECTED from production merge."
+}

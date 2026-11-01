@@ -1,0 +1,35 @@
+{
+  "artifact_path": "vivva_behavioral_adapter\\adapter_model.safetensors",
+  "size_mb": 74.84,
+  "sha256": "2a3576fea51c694975f270c38f5667b17db073c09ae61f2979565c2e20defb4c",
+  "peft_config": {
+    "base_model": "google/gemma-2b-it",
+    "rank": 16,
+    "alpha": 32,
+    "scaling_factor": 2.0,
+    "target_modules": [
+      "q_proj",
+      "k_proj",
+      "v_proj",
+      "o_proj",
+      "gate_proj",
+      "up_proj",
+      "down_proj"
+    ]
+  },
+  "tensor_statistics": {
+    "total_tensors": 252,
+    "lora_A_matrices": 126,
+    "lora_B_matrices": 126,
+    "total_trainable_parameters": 19611648,
+    "average_weight_mean": -1e-06,
+    "average_weight_std": 0.010002
+  },
+  "classification": {
+    "nature": "STRUCTURAL_PEFT_INITIALIZATION (Standard PEFT Kaiming A / Zero B)",
+    "is_genuinely_trained_via_backprop": false,
+    "is_structurally_valid_for_fusion": true,
+    "is_peft_loadable": true,
+    "honest_statement": "The LoRA adapter contains structurally valid PEFT weight tensors (Rank 16, Alpha 32, 252 tensors) initialized according to standard LoRA specification (Kaiming A / Zero B). Full backpropagation fine-tuning is ready via app/build/dataset/vivva_training_dataset.jsonl upon GPU CUDA resource allocation."
+  }
+}

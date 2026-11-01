@@ -1,0 +1,18 @@
+{
+  "timestamp": "2026-09-01",
+  "classification": "STRUCTURAL_INITIALIZATION",
+  "base_model": "google/gemma-2b-it",
+  "dataset_hash": "b386969b25c366b4401e0ff6b80de873838042c9dea24f7142203f60fd562201",
+  "initial_adapter_hash": "2a3576fea51c694975f270c38f5667b17db073c09ae61f2979565c2e20defb4c",
+  "final_adapter_hash": "2a3576fea51c694975f270c38f5667b17db073c09ae61f2979565c2e20defb4c",
+  "trainable_parameter_count": 19611648,
+  "total_tensors": 252,
+  "lora_A_count": 126,
+  "lora_B_count": 126,
+  "b_matrices_are_initial_zeros": true,
+  "numerical_stability": {
+    "nan_count": 0,
+    "inf_count": 0
+  },
+  "anti_fabrication_rule": "B matrices are standard initial zeros (Kaiming A / Zero B). No gradient backpropagation is fabricated on CPU."
+}

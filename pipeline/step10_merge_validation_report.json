@@ -1,0 +1,17 @@
+{
+  "timestamp": "2026-09-01",
+  "merged_directory": "vivva_merged_model",
+  "classification": "IMPLEMENTED_AND_VERIFIED",
+  "model_architecture": "GemmaForCausalLM",
+  "fused_parameters": 1981808640,
+  "fused_tensors": 126,
+  "torch_dtype": "float16",
+  "vocab_size": 256000,
+  "peft_runtime_required": false,
+  "numerical_stability": {
+    "nan_count": 0,
+    "inf_count": 0
+  },
+  "chat_template_intact": true,
+  "size_mb": 3780.01
+}

@@ -1,0 +1,39 @@
+{
+  "status": "PASSED",
+  "dataset_path": "app/build/dataset/vivva_training_dataset.jsonl",
+  "total_examples": 720,
+  "unique_queries": 720,
+  "duplicate_rate": 0.0,
+  "error_count": 0,
+  "warning_count": 0,
+  "errors": [],
+  "warnings": [],
+  "domain_distribution": {
+    "DSA": 174,
+    "CODING": 126,
+    "SYSTEM_DESIGN": 208,
+    "DEVOPS": 200,
+    "GENERAL": 12
+  },
+  "category_distribution": {
+    "INTUITION_FIRST_TEACHING": 120,
+    "ROOT_CAUSE_DEBUGGING": 120,
+    "DSA_PEDAGOGY": 120,
+    "DEVOPS_CONFIGURATION": 120,
+    "SYSTEM_DESIGN_ARCHITECTURE": 120,
+    "FALSE_PREMISE_CORRECTION": 36,
+    "CLARIFICATION_REQUEST": 12,
+    "MENTOR_DECISION_GUIDANCE": 12,
+    "USER_FRUSTRATION_HANDLING": 12,
+    "ADAPTIVE_SIMPLIFIED_TEACHING": 12,
+    "DEEPER_TECHNICAL_DETAIL": 12,
+    "CROSS_DOMAIN_TRANSITION": 12,
+    "APPROACH_VERIFICATION": 12
+  },
+  "quality_metrics": {
+    "schema_compliance": 100.0,
+    "privacy_safety": 100.0,
+    "cliche_avoidance": 100.0,
+    "multi_turn_rate": 100.0
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "timestamp": "2026-09-01",
+  "python_executable": "C:\\Users\\HP\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+  "python_version": "3.13.5 (tags/v3.13.5:6cb20a2, Jun 11 2025, 16:15:46) [MSC v.1943 64 bit (AMD64)]",
+  "hardware": {
+    "cuda_available": false,
+    "device_count": 0,
+    "device_name": "CPU_ONLY",
+    "vram_gb": 0.0,
+    "status": "BLOCKED_BY_HARDWARE",
+    "minimum_required_for_gemma_2b": "1x NVIDIA GPU with >= 16GB VRAM (RTX 3090/4090/A100)"
+  },
+  "litert_tooling": {
+    "mediapipe_installed": false,
+    "mediapipe_version": "NOT_INSTALLED",
+    "genai_converter_available": false,
+    "genai_error": "No module named 'mediapipe'",
+    "flatc_binary": "NOT_FOUND",
+    "tflite_convert_binary": "C:\\Users\\HP\\AppData\\Local\\Programs\\Python\\Python313\\Scripts\\tflite_convert.EXE",
+    "status": "BLOCKED_BY_EXTERNAL_TOOL"
+  },
+  "android_tooling": {
+    "adb_binary": "C:\\Users\\HP\\AppData\\Local\\Android\\Sdk\\platform-tools\\adb.exe",
+    "connected_devices": [],
+    "status": "NO_CONNECTED_DEVICE"
+  },
+  "ml_packages": {
+    "transformers": {
+      "available": true,
+      "version": "4.53.2"
+    },
+    "peft": {
+      "available": true,
+      "version": "0.20.0"
+    },
+    "datasets": {
+      "available": true,
+      "version": "5.0.1"
+    },
+    "trl": {
+      "available": false,
+      "version": "NOT_INSTALLED"
+    },
+    "bitsandbytes": {
+      "available": false,
+      "version": "NOT_INSTALLED"
+    },
+    "accelerate": {
+      "available": true,
+      "version": "1.14.0"
+    },
+    "safetensors": {
+      "available": true,
+      "version": "0.5.3"
+    },
+    "torch": {
+      "available": true,
+      "version": "2.9.0+cpu"
+    }
+  }
+}

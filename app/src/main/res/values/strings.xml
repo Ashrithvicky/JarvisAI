@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Jarvis</string>
+    <string name="app_tagline">Your On-Device AI Assistant</string>
+    <string name="accessibility_description">Lets Jarvis warn you about risky screens and open apps or navigate when you ask. Screen text is checked on this device and never stored or sent anywhere.</string>
+</resources>

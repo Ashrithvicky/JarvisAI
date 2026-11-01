@@ -1,0 +1,10 @@
+# VIVVA External GPU Training Requirements (Gemma 4 E2B Modern QLoRA Stack)
+# Target Environment: Google Colab (Tesla T4, CUDA 12.x / PyTorch 2.5+)
+transformers==5.10.1
+peft==0.19.0
+accelerate==1.4.0
+bitsandbytes==0.45.2
+datasets==3.2.0
+safetensors==0.5.2
+sentencepiece==0.2.0
+scipy==1.15.1
